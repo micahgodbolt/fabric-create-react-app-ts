@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Fabric, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
+import { Fabric, DefaultButton } from 'office-ui-fabric-react';
 
 interface IAppState {
   primary: boolean;
@@ -19,12 +19,12 @@ class App extends React.Component<{}, IAppState> {
     return (
       <div className="App">
         <Fabric>
-          { this.state.primary &&
-            <PrimaryButton onClick={() => this.setState({primary: false})}>Click Me</PrimaryButton>
-          }
-          { !this.state.primary &&
-            <DefaultButton onClick={() => this.setState({primary: true})}>Click Me</DefaultButton>
-          }
+          <DefaultButton
+            primary={this.state.primary} 
+            onClick={() => this.setState({primary: !this.state.primary})} 
+          >
+            Click Me
+          </DefaultButton>
         </Fabric>
       </div>
     );
