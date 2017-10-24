@@ -1,32 +1,23 @@
 import * as React from 'react';
 
-import { Fabric, DefaultButton } from 'office-ui-fabric-react';
+import { Fabric, TextField } from 'office-ui-fabric-react';
 
-interface IAppState {
-  primary: boolean;
+interface ITodoState {
+  text?: any;
 }
 
-class App extends React.Component<{}, IAppState> {
-
-  public constructor() {
-    super();
-    this.state = {
-      primary: true,
-    };
-  }
+class App extends React.Component<any, ITodoState> {
 
   render() {
     return (
-      <div className="App">
-        <Fabric>
-          <DefaultButton
-            primary={this.state.primary} 
-            onClick={() => this.setState({primary: !this.state.primary})} 
-          >
-            Click Me
-          </DefaultButton>
-        </Fabric>
-      </div>
+      <Fabric className="App">
+
+        <TextField
+          label="Enter Todo"
+          onChanged={(text) =>  this.setState({ text })}
+        />
+
+      </Fabric>
     );
   }
 }
