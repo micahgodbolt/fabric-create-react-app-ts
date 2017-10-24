@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Fabric, TextField, PrimaryButton, Checkbox } from 'office-ui-fabric-react';
+import { Fabric, TextField, PrimaryButton, Checkbox, ProgressIndicator } from 'office-ui-fabric-react';
 
 interface ITodoState {
   text?: any;
@@ -38,10 +38,15 @@ class App extends React.Component<any, ITodoState> {
           />
         }
 
+        <ProgressIndicator
+          label={`${this.state.todo ? 0 : 1 * 100} % Done`}
+          percentComplete={this.state.todo ? 0 : 1}
+        />
+
       </Fabric>
     );
   }
-  addTodo = (todo: string): void => {
+  addTodo = (todo: string | null): void => {
     this.setState( {
       todo
     });
